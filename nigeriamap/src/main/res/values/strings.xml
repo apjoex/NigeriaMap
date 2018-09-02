@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Nigeria Map</string>
+    <string name="image_showing_map">Image showing map</string>
+    <string name="disabledState">#D9D9DC</string>
+</resources>

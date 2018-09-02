@@ -1,0 +1,77 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+ext{
+    bintrayRepo = "NigeriaMap"
+    bintrayName = "com.apjoex.nigeriamap"
+
+    libraryName = 'nigeriamap'
+
+    //Artifact information
+
+    publishedGroupId = 'com.apjoex'
+    artifact = 'nigeriamap'
+    libraryVersion = '1.0.6'
+
+    libraryDescription = 'A UI Android library for drawing the map of Nigeria'
+    siteUrl = 'https://github.com/apjoex/NigeriaMap'
+    gitUrl = 'https://github.com/apjoex/NigeriaMap.git'
+    developerId = 'apjoex'
+    developerName = 'Akinde-peters Joseph'
+    developerEmail = 'apjoex@gmail.com'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+
+    compile ('com.sdsmdg.harjot:vectormaster:1.1.2'){
+        transitive = true
+    }
+    compile ('com.google.android:flexbox:1.0.0'){
+        transitive = true
+    }
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
+
+if (project.rootProject.file('local.properties').exists()){
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+}
