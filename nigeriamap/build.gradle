@@ -6,11 +6,9 @@ apply plugin: 'com.github.dcendents.android-maven'
 ext{
     bintrayRepo = "NigeriaMap"
     bintrayName = "com.apjoex.nigeriamap"
-
     libraryName = 'nigeriamap'
 
     //Artifact information
-
     publishedGroupId = 'com.apjoex'
     artifact = 'nigeriamap'
     libraryVersion = '1.0.6'
@@ -28,9 +26,6 @@ ext{
 
 android {
     compileSdkVersion 26
-
-
-
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 26
@@ -40,33 +35,29 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation 'com.android.support:appcompat-v7:26.1.0'
-
     compile ('com.sdsmdg.harjot:vectormaster:1.1.2'){
         transitive = true
     }
     compile ('com.google.android:flexbox:1.0.0'){
         transitive = true
     }
-
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
 repositories {
     mavenCentral()
 }

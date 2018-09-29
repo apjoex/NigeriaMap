@@ -70,25 +70,25 @@ public class NigeriaMap extends LinearLayout {
         legendBox.setAlignItems(AlignItems.STRETCH);
         legendBox.setAlignContent(AlignContent.STRETCH);
 
-        if(attrs != null){
+        if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NigeriaMap);
 
             Boolean titleStatus = typedArray.getBoolean(R.styleable.NigeriaMap_showTitle, true);
-            if (titleStatus){
+            if (titleStatus) {
                 showTitle();
-            }else{
+            } else {
                 hideTitle();
             }
 
             Boolean legendStatus = typedArray.getBoolean(R.styleable.NigeriaMap_showLegend, true);
-            if (legendStatus){
+            if (legendStatus) {
                 showLegend();
-            }else{
+            } else {
                 hideLegend();
             }
 
             String title = typedArray.getString(R.styleable.NigeriaMap_title);
-            if (title != null && !title.isEmpty()){
+            if (title != null && !title.isEmpty()) {
                 this.title.setText(title);
             }
 
@@ -124,7 +124,7 @@ public class NigeriaMap extends LinearLayout {
     }
 
     public void goGreyScale() {
-        for(State state : allStates){
+        for (State state : allStates) {
             state.pathModel.setStrokeColor(Color.BLACK);
             state.pathModel.setFillColor(Color.parseColor(getResources().getString(R.string.disabledState)));
         }
@@ -143,13 +143,13 @@ public class NigeriaMap extends LinearLayout {
     }
 
     public void showBorders() {
-        for (State s : allStates){
+        for (State s : allStates) {
             s.pathModel.setStrokeAlpha(1.0f);
         }
     }
 
     public void hideBorders() {
-        for (State s : allStates){
+        for (State s : allStates) {
             s.pathModel.setStrokeAlpha(0.0f);
         }
     }
@@ -167,18 +167,18 @@ public class NigeriaMap extends LinearLayout {
     public void updateLegend() {
         vectorMasterDrawable.update();
         legendBox.removeAllViews();
-        for (State s : allStates){
-            if (s.pathModel.getFillColor() != Color.parseColor(getResources().getString(R.string.disabledState))){
+        for (State s : allStates) {
+            if (s.pathModel.getFillColor() != Color.parseColor(getResources().getString(R.string.disabledState))) {
                 TextView mStateLegend = new TextView(mContext);
                 mStateLegend.setTextSize(12);
-                mStateLegend.setText("■ "+s.name+"   ", TextView.BufferType.SPANNABLE);
+                mStateLegend.setText("■ " + s.name + "   ", TextView.BufferType.SPANNABLE);
                 mStateLegend.setGravity(Gravity.CENTER);
-                Spannable span = (Spannable)mStateLegend.getText();
+                Spannable span = (Spannable) mStateLegend.getText();
                 span.setSpan(new ForegroundColorSpan(s.pathModel.getFillColor()), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 legendBox.addView(mStateLegend);
             }
         }
-        if (isLegendShown){
+        if (isLegendShown) {
             showLegend();
         }
 
